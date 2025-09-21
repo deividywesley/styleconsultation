@@ -3,115 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultoria de Estilo em Joinville | Maria Silva</title>
-    <meta name="description" content="Consultoria de estilo e imagem em Joinville. Transforme seu visual com Maria Silva, especialista em moda e personal stylist.">
+    <title>Consultoria de Estilo em Joinville | Edna Fernandes</title>
+    <meta name="description" content="Consultoria de estilo e imagem em Joinville. Transforme seu visual com Edna Fernandes, especialista em moda e personal stylist. Atendimento personalizado em moda, imagem e autoestima. Agende sua consultoria agora!">
+    <meta name="keywords" content="Edna Fernandes, consultora de estilo, consultoria de imagem, moda feminina, estilo pessoal, Joinville, autoestima, guarda-roupa inteligente">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="seu-código-de-verificação-aqui">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        html { box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
             color: #333;
+            background: #fff;
         }
         header {
             background: #f8f8f8;
-            padding: 20px;
+            padding: 20px 10px;
             text-align: center;
             border-bottom: 1px solid #ddd;
+            position: relative;
         }
         header h1 {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
-        nav a {
-            margin: 0 10px;
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+        /* Menu padrão desktop */
+        nav.main-nav {
+            margin-top: 10px;
+        }
+        nav.main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        nav.main-nav li {
+            display: inline;
+        }
+        nav.main-nav a {
             text-decoration: none;
             color: #555;
+            font-weight: 500;
+            transition: color 0.2s, background 0.2s;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+        nav.main-nav a:hover, nav.main-nav a:focus {
+            color: #fff;
+            background: #b48a78;
+            outline: none;
+        }
+        /* Menu lateral mobile */
+        #menu-toggle {
+            display: none;
+        }
+        .menu-icon {
+            display: none;
+            position: absolute;
+            top: 28px;
+            left: 24px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        .menu-icon span,
+        .menu-icon span:before,
+        .menu-icon span:after {
+            display: block;
+            position: absolute;
+            width: 28px;
+            height: 4px;
+            background: #b48a78;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .menu-icon span {
+            top: 14px;
+            left: 2px;
+        }
+        .menu-icon span:before {
+            content: '';
+            top: -10px;
+            left: 0;
+        }
+        .menu-icon span:after {
+            content: '';
+            top: 10px;
+            left: 0;
+        }
+        .side-menu {
+            display: none;
+        }
+        @media (max-width: 700px) {
+            nav.main-nav ul {
+                display: none;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .side-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -260px;
+                width: 240px;
+                height: 100vh;
+                background: #fff;
+                box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+                padding-top: 60px;
+                z-index: 1001;
+                transition: left 0.3s;
+            }
+            .side-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .side-menu li {
+                border-bottom: 1px solid #eee;
+            }
+            .side-menu a {
+                display: block;
+                padding: 18px 24px;
+                color: #555;
+                font-size: 1.1rem;
+                text-decoration: none;
+                transition: background 0.2s, color 0.2s;
+            }
+            .side-menu a:hover, .side-menu a:focus {
+                background: #b48a78;
+                color: #fff;
+            }
+            #menu-toggle:checked ~ .side-menu {
+                left: 0;
+            }
+            #menu-toggle:checked + .menu-icon span {
+                background: transparent;
+            }
+            #menu-toggle:checked + .menu-icon span:before {
+                transform: rotate(45deg);
+                top: 0;
+            }
+            #menu-toggle:checked + .menu-icon span:after {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+            #menu-toggle:checked ~ .menu-overlay {
+                display: block;
+            }
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.25);
+                z-index: 1000;
+            }
         }
         .hero {
-            background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
-            color: white;
+            background: url('img/IMG-20250921-WA0010.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 120px 20px;
             text-align: center;
-            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 320px;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 16px;
         }
         .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+        .hero p {
+            margin: 0;
+            font-size: 1.15rem;
         }
         .container {
             max-width: 1000px;
             margin: auto;
-            padding: 20px;
+            padding: 32px 20px;
         }
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
         }
         .service {
             background: #fafafa;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 24px 18px;
+            border-radius: 8px;
             border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .service:hover, .service:focus-within {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transform: translateY(-4px) scale(1.02);
+        }
+        .service h3 {
+            margin-top: 0;
+            color: #b48a78;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .service p {
+            margin: 0;
+            font-size: 1rem;
         }
         footer {
             background: #f8f8f8;
             text-align: center;
             padding: 15px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border-top: 1px solid #ddd;
+            color: #888;
+            margin-top: 40px;
+        }
+        a:focus {
+            outline: 2px solid #b48a78;
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Edna Fernandes - Consultoria de Estilo</h1>
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#contato">Contato</a>
+        <input type="checkbox" id="menu-toggle" aria-label="Abrir menu" />
+        <label class="menu-icon" for="menu-toggle" tabindex="0">
+            <span></span>
+        </label>
+        <h1>Edna Fernandes <span class="sr-only">- Consultoria de Estilo</span></h1>
+        <!-- Menu tradicional (desktop) -->
+        <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
+        <!-- Menu lateral (mobile) -->
+        <nav class="side-menu" aria-label="Menu lateral">
+            <ul>
+                <li><a href="#sobre" onclick="document.getElementById('menu-toggle').checked=false;">Sobre</a></li>
+                <li><a href="#servicos" onclick="document.getElementById('menu-toggle').checked=false;">Serviços</a></li>
+                <li><a href="#contato" onclick="document.getElementById('menu-toggle').checked=false;">Contato</a></li>
+            </ul>
+        </nav>
+        <label class="menu-overlay" for="menu-toggle"></label>
     </header>
-
-    <section class="hero">
-        <h2>Transforme seu visual com confiança</h2>
-        <p>Consultoria de estilo e imagem em Joinville</p>
-    </section>
-
-    <section id="sobre" class="container">
-        <h2>Sobre mim</h2>
-        <p>Sou Edna Fernandes, consultora de estilo com mais de 10 anos de experiência ajudando clientes a expressarem sua personalidade através da moda. Atendo em Joinville e região.</p>
-    </section>
-
-    <section id="servicos" class="container">
-        <h2>Serviços</h2>
-        <div class="services">
-            <div class="service">
-                <h3>Consultoria de Imagem</h3>
-                <p>Análise de estilo, cores e peças que valorizam seu corpo e personalidade.</p>
+    <main>
+        <section class="hero" aria-labelledby="sobre-titulo">
+            <div class="container hero-content">
+                <h2 id="sobre-titulo">Sobre mim</h2>
+                <p>Sou Edna Fernandes, consultora de estilo com mais de 10 anos de experiência ajudando clientes a expressarem sua personalidade através da moda. Atendo em Joinville e região.</p>
             </div>
-            <div class="service">
-                <h3>Personal Shopper</h3>
-                <p>Acompanhamento em compras para otimizar seu guarda-roupa.</p>
+        </section>
+        <section id="servicos" class="container" aria-labelledby="servicos-titulo">
+            <h2 id="servicos-titulo">Serviços</h2>
+            <div class="services">
+                <article class="service" tabindex="0">
+                    <h3>Consultoria de Imagem</h3>
+                    <p>Análise de estilo, cores e peças que valorizam seu corpo e personalidade.</p>
+                </article>
+                <article class="service" tabindex="0">
+                    <h3>Personal Shopper</h3>
+                    <p>Acompanhamento em compras para otimizar seu guarda-roupa.</p>
+                </article>
+                <article class="service" tabindex="0">
+                    <h3>Personal Organizer</h3>
+                    <p>Seleção e organização de peças para facilitar seu dia a dia.</p>
+                </article>
             </div>
-            <div class="service">
-                <h3>Organização de Closet</h3>
-                <p>Seleção e organização de peças para facilitar seu dia a dia.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="container">
-        <h2>Contato</h2>
-        <p>Entre em contato para agendar sua consultoria:</p>
-        <p>Email: <a href="mailto:ednafernandes.consultoria@gmail.com">ednafernandes.consultoria@gmail.com</a></p>
-        <p>WhatsApp: <a href="https://wa.me/5547988109440" target="_blank">(47) 98810-9440</a></p>
-        <p>Instagram: <a href="https://www.instagram.com/ednafernandees_?igsh=Y28xcXNmcDJjZnk0&utm_source=qr" target="_blank">ednafernandees_</a></p>
-    </section>
-
+        </section>
+        <section id="contato" class="container" aria-labelledby="contato-titulo">
+            <h2 id="contato-titulo">Contato</h2>
+            <p>Entre em contato para agendar sua consultoria:</p>
+            <ul>
+                <li>Email: <a href="mailto:ednafernandes.consultoria@gmail.com">ednafernandes.consultoria@gmail.com</a></li>
+                <li>WhatsApp: <a href="https://wa.me/5547988109440" target="_blank" rel="noopener">(47) 98810-9440</a></li>
+                <li>Instagram: <a href="https://www.instagram.com/ednafernandees_?igsh=Y28xcXNmcDJjZnk0&utm_source=qr" target="_blank" rel="noopener">@ednafernandees_</a></li>
+            </ul>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2025 Edna Fernandes - Consultoria de Estilo | Joinville - SC</p>
     </footer>
-
 </body>
 </html>
