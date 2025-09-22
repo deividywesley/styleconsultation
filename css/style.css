@@ -1,0 +1,547 @@
+:root {
+    --bg: #fff;
+    --text: #333;
+    --muted: #888;
+    --brand: #b48a78;
+    --header-bg: #f8f8f8;
+    --overlay: rgba(0, 0, 0, 0.55);
+    --hero-min-vh: 92vh;
+    --gutter: 20px;
+    --max-width: 1100px;
+
+    /* paleta seção contato */
+    --contato-dark: #50413b;
+    --contato-mid: #b1a08f;
+    --contato-light: #d9c8b9;
+    --contato-foreground: #ffffff;
+    --contato-text: #2b1f1c;
+    --contato-accent: #50413b;
+}
+
+/* reset + base */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Montserrat", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus,
+.skip-link:active {
+    left: 8px;
+    top: 8px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: var(--brand);
+    color: #fff;
+    z-index: 9999;
+    border-radius: 4px;
+}
+
+/* main pushes footer to bottom */
+main {
+    flex: 1;
+    min-width: 0;
+}
+
+/* header */
+header {
+    background: var(--header-bg);
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* visually hidden helper */
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* nav - desktop */
+nav.main-nav {
+    margin-top: 8px;
+}
+
+nav.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+nav.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background .18s, color .18s;
+}
+
+nav.main-nav a:hover,
+nav.main-nav a:focus,
+nav.main-nav a[aria-current="page"] {
+    color: #fff;
+    background: var(--brand);
+    outline: none;
+}
+
+/* mobile menu toggle (checkbox pattern) */
+#menu-toggle {
+    display: none;
+}
+
+/* hamburger */
+.menu-icon {
+    display: none;
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    z-index: 1006;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon span,
+.menu-icon span::before,
+.menu-icon span::after {
+    display: block;
+    position: absolute;
+    width: 26px;
+    height: 3px;
+    background: var(--brand);
+    border-radius: 3px;
+    transition: transform .25s ease, opacity .18s ease, top .25s ease;
+}
+
+.menu-icon span {
+    top: 20px;
+    left: 8px;
+}
+
+.menu-icon span::before {
+    content: "";
+    top: -8px;
+    left: 0;
+}
+
+.menu-icon span::after {
+    content: "";
+    top: 8px;
+    left: 0;
+}
+
+/* side menu (mobile) */
+.side-menu {
+    display: none;
+    z-index: 1005;
+}
+
+/* responsive breakpoints */
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 1rem;
+    }
+
+    nav.main-nav ul {
+        display: none;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .side-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 240px;
+        height: 100vh;
+        background: var(--bg);
+        box-shadow: 2px 0 18px rgba(0, 0, 0, 0.08);
+        padding-top: 64px;
+        transition: left .28s cubic-bezier(.2, .9, .3, 1);
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .side-menu li {
+        border-bottom: 1px solid #eee;
+    }
+
+    .side-menu a {
+        display: block;
+        padding: 16px 20px;
+        font-size: 1.05rem;
+        color: #555;
+        text-decoration: none;
+        transition: background .18s, color .18s;
+    }
+
+    .side-menu a:hover,
+    .side-menu a:focus {
+        background: var(--brand);
+        color: #fff;
+    }
+
+    /* toggle states rely on DOM order: keep input before side-menu */
+    #menu-toggle:checked~.side-menu {
+        left: 0;
+    }
+
+    #menu-toggle:checked+.menu-icon span {
+        background: transparent;
+    }
+
+    #menu-toggle:checked+.menu-icon span::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    #menu-toggle:checked+.menu-icon span::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.25);
+        z-index: 1004;
+    }
+
+    #menu-toggle:checked~.menu-overlay {
+        display: block;
+    }
+
+    .social-links {
+
+        right: auto;
+        transform: translateY(-50%);
+    }
+}
+
+/* hero */
+.hero {
+    min-height: var(--hero-min-vh);
+    background: url('../img/IMG-20250921-WA0012.jpg') center/cover no-repeat;
+    color: #fff;
+    padding: 6vh var(--gutter);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(.95) saturate(.98);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 0 1rem;
+}
+
+/* responsive typography */
+.hero h2 {
+    font-size: clamp(1.5rem, 2.6vw + 1rem, 2.6rem);
+    margin: 0 0 .6rem;
+}
+
+.hero p {
+    font-size: clamp(1rem, 1.4vw + .2rem, 1.125rem);
+    margin: 0;
+}
+
+/* content containers */
+.container {
+    margin: 0 auto;
+    padding: 32px var(--gutter);
+    box-sizing: border-box;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+/* cards */
+.service {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.service:hover,
+.service:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.service h3 {
+    margin-top: 0;
+    color: var(--brand);
+    font-size: 1.15rem;
+    margin-bottom: .5rem;
+}
+
+.service p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* about page helpers */
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 40px var(--gutter);
+}
+
+.about-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.about-image {
+    flex-basis: 300px;
+    flex-grow: 0;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* footer */
+footer {
+    background: var(--header-bg);
+    text-align: center;
+    padding: 16px;
+    font-size: .95rem;
+    border-top: 1px solid #ddd;
+    color: var(--muted);
+}
+
+/* accessibility: visible focus state */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* social links (header) */
+.social-links {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 1007;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background .15s, color .15s;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    background: var(--brand);
+    color: #fff;
+}
+
+.social-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Seção de contato com gradiente da paleta solicitada */
+#contato {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--contato-dark) 0%, var(--contato-mid) 55%, var(--contato-light) 100%);
+    color: var(--contato-text);
+    padding: 1.6rem;
+    border: 1px solid rgba(80, 65, 59, 0.08);
+    box-shadow: 0 8px 20px rgba(80, 65, 59, 0.09);
+}
+
+/* leve overlay claro para garantir contraste consistente do texto sobre o gradiente */
+#contato::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* garantir conteúdo acima do overlay */
+#contato > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Título contrastante */
+#contato h2 {
+    color: var(--contato-foreground);
+    background: linear-gradient(90deg, rgba(80, 65, 59, 0.9), rgba(177, 160, 143, 0.9));
+    display: inline-block;
+    padding: .35rem .75rem;
+    border-radius: 8px;
+    margin-bottom: .75rem;
+}
+
+/* Texto e lista legíveis */
+#contato p,
+#contato li {
+    color: rgba(255,255,255,0.95);
+    margin: .35rem 0;
+}
+
+/* Links e acentuação */
+#contato a {
+    color: var(--contato-accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+#contato a:hover,
+#contato a:focus {
+    text-decoration: underline;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(177, 160, 143, 0.12);
+}
+
+/* Ícones inline (usam fill="currentColor" nos SVGs) */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: .35rem 0;
+}
+.contact-list li svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    fill: currentColor;
+    color: var(--contato-accent);
+}
+
+/* Ajustes responsivos */
+@media (min-width: 768px) {
+    #contato {
+        padding: 2rem;
+    }
+}
