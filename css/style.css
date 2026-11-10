@@ -285,7 +285,7 @@ nav.main-nav a[aria-current="page"] {
 /* hero */
 .hero {
     min-height: var(--hero-min-vh);
-    background: url('../img/IMG-20250921-WA0012.jpg') center/cover no-repeat;
+    background: url('../img/foto home.jpg') center/cover no-repeat;
     color: #fff;
     padding: 6vh var(--gutter);
     text-align: center;
