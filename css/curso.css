@@ -431,8 +431,8 @@ body.curso-page {
 @media (max-width: 720px) {
     .curso-container { width: min(100% - 36px, 560px); }
     .curso-header { position: relative; padding: 18px 0; color: var(--curso-marrom); background: var(--curso-off-white); }
-    .curso-nav { align-items: flex-start; }
-    .curso-nav-links { gap: 11px 15px; font-size: .59rem; }
+    .curso-nav { flex-direction: column; align-items: flex-start; gap: 13px; }
+    .curso-nav-links { width: 100%; flex-wrap: nowrap; justify-content: flex-start; gap: 19px; padding-bottom: 4px; overflow-x: auto; font-size: .62rem; scrollbar-width: thin; white-space: nowrap; }
     .curso-hero,
     .curso-hero-grid,
     .curso-hero-photo { min-height: auto; }
