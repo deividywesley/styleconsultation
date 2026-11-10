@@ -448,6 +448,15 @@ body.curso-page {
     .curso-includes-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+@media (min-width: 721px) {
+    .curso-module-scroll { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px 2px; overflow: visible; scroll-snap-type: none; }
+    .curso-module-card { flex: none; scroll-snap-align: none; }
+    .curso-module-next,.curso-module-previous { display: none; }
+    .curso-includes-scroll { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px 2px; overflow: visible; scroll-snap-type: none; }
+    .curso-includes-scroll .curso-include { flex: none; scroll-snap-align: none; }
+    .curso-include-next,.curso-include-previous { display: none; }
+}
+
 @media (max-width: 720px) {
     .curso-container { width: min(100% - 36px, 560px); }
     .curso-header { position: relative; padding: 18px 0; color: var(--curso-marrom); background: var(--curso-off-white); }
