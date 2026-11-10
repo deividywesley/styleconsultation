@@ -347,11 +347,12 @@ body.curso-page {
 .curso-journey-heading > p { max-width: 470px; margin-bottom: 5px; font-size: clamp(1.05rem, 1.5vw, 1.28rem); line-height: 1.35; }
 .curso-module-carousel { position: relative; }
 .curso-module-scroll { display: flex; gap: 20px; padding: 8px 74px 25px 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-color: rgba(246, 245, 241, .6) rgba(246, 245, 241, .16); scrollbar-width: thin; }
-.curso-module-next,.curso-module-previous { position: absolute; z-index: 1; top: 50%; display: grid; width: 48px; height: 48px; padding: 0; place-items: center; border: 1px solid rgba(246, 245, 241, .6); border-radius: 50%; background: rgba(246, 245, 241, .1); color: var(--curso-off-white); cursor: pointer; transform: translateY(-50%); transition: background .2s ease, transform .2s ease; }
+.curso-module-next,.curso-module-previous { position: absolute; z-index: 1; top: 50%; display: grid; width: 48px; height: 48px; padding: 0; place-items: center; border: 1px solid rgba(246, 245, 241, .35); border-radius: 50%; background: rgba(246, 245, 241, .04); color: var(--curso-off-white); cursor: pointer; opacity: .58; transform: translateY(-50%); transition: background .2s ease, opacity .2s ease, transform .2s ease; }
 .curso-module-next { right: 8px; }
 .curso-module-previous { left: 8px; }
-.curso-module-next:hover,.curso-module-next:focus-visible,.curso-module-previous:hover,.curso-module-previous:focus-visible { background: rgba(246, 245, 241, .23); transform: translateY(-50%) scale(1.06); }
-.curso-module-next svg,.curso-module-previous svg { width: 25px; height: 25px; }
+.curso-module-next:hover,.curso-module-next:focus-visible,.curso-module-previous:hover,.curso-module-previous:focus-visible { background: rgba(246, 245, 241, .18); opacity: 1; transform: translateY(-50%) scale(1.06); }
+.curso-module-next svg,.curso-module-previous svg { width: 25px; height: 25px; fill: currentColor; }
+.curso-chevron-right { transform: rotate(180deg); }
 .curso-module-next:disabled,.curso-module-previous:disabled { opacity: .28; cursor: default; pointer-events: none; }
 .curso-module-card { display: flex; flex: 0 0 min(390px, 34vw); flex-direction: column; min-height: 385px; padding: 32px 28px 27px; border: 1px solid rgba(246, 245, 241, .35); border-radius: 17px; background: rgba(246, 245, 241, .11); scroll-snap-align: start; }
 .curso-module-card .curso-module-number { margin-bottom: 23px; color: var(--curso-off-white); font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
@@ -382,11 +383,11 @@ body.curso-page {
 .curso-includes-scroll { display: flex; gap: 14px; padding: 8px 74px 25px 2px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-color: var(--curso-bege) rgba(177, 160, 143, .22); scrollbar-width: thin; }
 .curso-includes-scroll .curso-include { display: flex; flex: 0 0 min(230px, 20vw); flex-direction: column; min-height: 175px; padding: 25px 21px; scroll-snap-align: start; }
 .curso-includes-scroll .curso-include p { font-size: .9rem; line-height: 1.45; }
-.curso-include-next,.curso-include-previous { position: absolute; z-index: 1; top: 50%; display: grid; width: 48px; height: 48px; padding: 0; place-items: center; border: 1px solid var(--curso-vinho); border-radius: 50%; background: rgba(246, 245, 241, .5); color: var(--curso-vinho); cursor: pointer; transform: translateY(-50%); transition: background .2s ease, transform .2s ease; }
+.curso-include-next,.curso-include-previous { position: absolute; z-index: 1; top: 50%; display: grid; width: 48px; height: 48px; padding: 0; place-items: center; border: 1px solid rgba(90, 63, 69, .38); border-radius: 50%; background: rgba(246, 245, 241, .16); color: var(--curso-vinho); cursor: pointer; opacity: .58; transform: translateY(-50%); transition: background .2s ease, opacity .2s ease, transform .2s ease; }
 .curso-include-next { right: 8px; }
 .curso-include-previous { left: 8px; }
-.curso-include-next:hover,.curso-include-next:focus-visible,.curso-include-previous:hover,.curso-include-previous:focus-visible { background: var(--curso-off-white); transform: translateY(-50%) scale(1.06); }
-.curso-include-next svg,.curso-include-previous svg { width: 25px; height: 25px; }
+.curso-include-next:hover,.curso-include-next:focus-visible,.curso-include-previous:hover,.curso-include-previous:focus-visible { background: var(--curso-off-white); opacity: 1; transform: translateY(-50%) scale(1.06); }
+.curso-include-next svg,.curso-include-previous svg { width: 25px; height: 25px; fill: currentColor; }
 .curso-include-next:disabled,.curso-include-previous:disabled { opacity: .28; cursor: default; pointer-events: none; }
 
 .curso-bonus { padding: 85px 0; color: var(--curso-off-white); background: var(--curso-vinho); }
@@ -511,10 +512,14 @@ body.curso-page {
     .curso-module-next { right: 0; width: 44px; height: 44px; }
     .curso-module-previous { left: 0; width: 44px; height: 44px; }
     .curso-module-card { flex-basis: min(330px, 84vw); min-height: 405px; padding: 27px 23px 22px; }
-    .curso-includes-scroll { margin-right: -18px; padding-right: 70px; }
-    .curso-includes-scroll .curso-include { flex-basis: min(270px, 72vw); min-height: 165px; }
-    .curso-include-next { right: 0; width: 44px; height: 44px; }
-    .curso-include-previous { left: 0; width: 44px; height: 44px; }
+    .curso-includes-scroll { margin-right: 0; padding-right: 2px; }
+    .curso-includes-scroll .curso-include { flex-basis: calc((100% - 14px) / 2); min-height: 215px; padding: 20px 15px; }
+    .curso-includes-scroll .curso-include p { font-size: .82rem; }
+    .curso-include-next { right: -16px; width: 40px; height: 40px; }
+    .curso-include-previous { left: -16px; width: 40px; height: 40px; }
+    .curso-bonus-deadline { display: flex; flex-direction: column; align-items: center; margin: 0 auto; text-align: center; }
+    .curso-bonus-deadline span { display: block; margin-top: 5px; }
+    .curso-bonus h2 { text-align: center; }
 }
 
 @media (max-width: 420px) {
