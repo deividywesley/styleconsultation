@@ -259,12 +259,23 @@
 
                 if (!scrollArea || !previousButton || !nextButton) return;
 
-                previousButton.addEventListener('click', () => {
-                    scrollArea.scrollBy({ left: -scrollArea.clientWidth * 0.78, behavior: 'smooth' });
-                });
-                nextButton.addEventListener('click', () => {
-                    scrollArea.scrollBy({ left: scrollArea.clientWidth * 0.78, behavior: 'smooth' });
-                });
+                const updateControls = () => {
+                    const maxScroll = Math.max(0, scrollArea.scrollWidth - scrollArea.clientWidth);
+                    previousButton.disabled = scrollArea.scrollLeft <= 1;
+                    nextButton.disabled = scrollArea.scrollLeft >= maxScroll - 1;
+                };
+
+                const move = (direction) => {
+                    const maxScroll = Math.max(0, scrollArea.scrollWidth - scrollArea.clientWidth);
+                    const target = Math.min(maxScroll, Math.max(0, scrollArea.scrollLeft + (scrollArea.clientWidth * .78 * direction)));
+                    scrollArea.scrollTo({ left: target, behavior: 'smooth' });
+                };
+
+                previousButton.addEventListener('click', () => move(-1));
+                nextButton.addEventListener('click', () => move(1));
+                scrollArea.addEventListener('scroll', updateControls, { passive: true });
+                window.addEventListener('resize', updateControls);
+                updateControls();
             };
 
             setupHorizontalScroll('modulos-scroll', '.curso-module-previous', '.curso-module-next');

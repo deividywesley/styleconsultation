@@ -352,6 +352,7 @@ body.curso-page {
 .curso-module-previous { left: 8px; }
 .curso-module-next:hover,.curso-module-next:focus-visible,.curso-module-previous:hover,.curso-module-previous:focus-visible { background: rgba(246, 245, 241, .23); transform: translateY(-50%) scale(1.06); }
 .curso-module-next svg,.curso-module-previous svg { width: 25px; height: 25px; }
+.curso-module-next:disabled,.curso-module-previous:disabled { opacity: .28; cursor: default; pointer-events: none; }
 .curso-module-card { display: flex; flex: 0 0 min(390px, 34vw); flex-direction: column; min-height: 385px; padding: 32px 28px 27px; border: 1px solid rgba(246, 245, 241, .35); border-radius: 17px; background: rgba(246, 245, 241, .11); scroll-snap-align: start; }
 .curso-module-card .curso-module-number { margin-bottom: 23px; color: var(--curso-off-white); font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .curso-module-card h3 { margin-bottom: 16px; font-size: 2.15rem; letter-spacing: -.04em; }
@@ -386,6 +387,7 @@ body.curso-page {
 .curso-include-previous { left: 8px; }
 .curso-include-next:hover,.curso-include-next:focus-visible,.curso-include-previous:hover,.curso-include-previous:focus-visible { background: var(--curso-off-white); transform: translateY(-50%) scale(1.06); }
 .curso-include-next svg,.curso-include-previous svg { width: 25px; height: 25px; }
+.curso-include-next:disabled,.curso-include-previous:disabled { opacity: .28; cursor: default; pointer-events: none; }
 
 .curso-bonus { padding: 85px 0; color: var(--curso-off-white); background: var(--curso-vinho); }
 .curso-bonus-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
