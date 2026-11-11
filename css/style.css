@@ -65,6 +65,11 @@ body {
     border-radius: 4px;
 }
 
+/* long-scrolling page: keep anchored sections clear of the sticky header */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
 /* main pushes footer to bottom */
 main {
     flex: 1;
@@ -77,7 +82,9 @@ header {
     padding: 16px 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header h1 {
@@ -462,87 +469,100 @@ footer {
     }
 }
 
-/* Seção de contato com gradiente da paleta solicitada */
+/* Seção de contato (paleta da página do curso) */
 #contato {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--contato-dark) 0%, var(--contato-mid) 55%, var(--contato-light) 100%);
-    color: var(--contato-text);
-    padding: 1.6rem;
-    border: 1px solid rgba(80, 65, 59, 0.08);
-    box-shadow: 0 8px 20px rgba(80, 65, 59, 0.09);
+    padding: 56px var(--gutter);
+    color: #2b2623;
+    background: #f6f5f1;
 }
 
-/* leve overlay claro para garantir contraste consistente do texto sobre o gradiente */
-#contato::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.18) 100%);
-    pointer-events: none;
-    z-index: 0;
+.contato-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #d9c8b9;
 }
 
-/* garantir conteúdo acima do overlay */
-#contato > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Título contrastante */
 #contato h2 {
-    color: var(--contato-foreground);
-    background: linear-gradient(90deg, rgba(80, 65, 59, 0.9), rgba(177, 160, 143, 0.9));
-    display: inline-block;
-    padding: .35rem .75rem;
-    border-radius: 8px;
-    margin-bottom: .75rem;
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: #2b2623;
 }
 
-/* Texto e lista legíveis */
-#contato p,
-#contato li {
-    color: rgba(255,255,255,0.95);
-    margin: .35rem 0;
+#contato .contato-header p {
+    margin: 0;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #806153;
 }
 
-/* Links e acentuação */
-#contato a {
-    color: var(--contato-accent);
-    text-decoration: none;
-    font-weight: 600;
-}
-#contato a:hover,
-#contato a:focus {
-    text-decoration: underline;
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(177, 160, 143, 0.12);
+.contato-body {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 6vw, 80px);
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
 }
 
-/* Ícones inline (usam fill="currentColor" nos SVGs) */
+.contato-foto {
+    width: clamp(220px, 30vw, 320px);
+    aspect-ratio: 1;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 28px rgba(43, 38, 35, 0.14);
+}
+
 .contact-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    display: grid;
+    gap: 1rem;
 }
+
 .contact-list li {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    margin: .35rem 0;
-}
-.contact-list li svg {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-    fill: currentColor;
-    color: var(--contato-accent);
+    gap: 1rem;
+    font-size: .9rem;
+    color: #3f3835;
 }
 
-/* Ajustes responsivos */
-@media (min-width: 768px) {
-    #contato {
-        padding: 2rem;
-    }
+.contact-list .contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border: 1px solid #806153;
+    border-radius: 50%;
+    color: #806153;
+}
+
+.contact-list .contact-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+#contato a {
+    color: #2b2623;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#contato a:hover,
+#contato a:focus-visible {
+    color: #5a3f45;
+    text-decoration: underline;
 }
